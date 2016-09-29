@@ -74,28 +74,62 @@ class GestureViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
-        print("Heck yea I was tapped")
-        self.correctActionGesture(selected: self.currentActionGesture == .tap)
+    @IBAction func didPerformGesture(_ sender: UIGestureRecognizer) {
+        
+        if let tapGesture: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
+            switch (tapGesture.numberOfTapsRequired, tapGesture.numberOfTouchesRequired){
+            case (1, 1):
+                print("Heck yea I was tapped")
+                self.correctActionGesture(selected: self.currentActionGesture == .tap)
+            case (2, 1):
+                print("double tap!")
+                self.correctActionGesture(selected: self.currentActionGesture == .doubleTap)
+            case (1, 2):
+                print("two finger tap!")
+                self.correctActionGesture(selected: self.currentActionGesture == .twoFingerTap)
+            default:
+                print("tap type was wrong!")
+                self.correctActionGesture(selected: false)
+            }
+        }
+        
+        if let swipeGesture: UISwipeGestureRecognizer = sender as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                print("did swipe left")
+                self.correctActionGesture(selected: self.currentActionGesture == .leftSwipe)
+            case UISwipeGestureRecognizerDirection.right:
+                print("did swipe right")
+                self.correctActionGesture(selected: self.currentActionGesture == .rightSwipe)
+            default:
+                print("was not left/right")
+                self.correctActionGesture(selected: false)
+            }
+        }
     }
     
-    @IBAction func didDoubleTapView(_ sender: UITapGestureRecognizer) {
-        print("double tap!")
-        self.correctActionGesture(selected: self.currentActionGesture == .doubleTap)
-    }
-    
-    @IBAction func didTwoFingerTapView(_ sender: UITapGestureRecognizer) {
-        print("two finger tap!")
-        self.correctActionGesture(selected: self.currentActionGesture == .twoFingerTap)
-    }
-    
-    @IBAction func didLeftSwipe(_ sender: UISwipeGestureRecognizer) {
-        print("did swipe left")
-        self.correctActionGesture(selected: self.currentActionGesture == .leftSwipe)
-    }
-    
-    @IBAction func didRightSwipe(_ sender: AnyObject) {
-        print("did swipe right")
-        self.correctActionGesture(selected: self.currentActionGesture == .rightSwipe)
-    }
+//    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
+//        print("Heck yea I was tapped")
+//        self.correctActionGesture(selected: self.currentActionGesture == .tap)
+//    }
+//    
+//    @IBAction func didDoubleTapView(_ sender: UITapGestureRecognizer) {
+//        print("double tap!")
+//        self.correctActionGesture(selected: self.currentActionGesture == .doubleTap)
+//    }
+//    
+//    @IBAction func didTwoFingerTapView(_ sender: UITapGestureRecognizer) {
+//        print("two finger tap!")
+//        self.correctActionGesture(selected: self.currentActionGesture == .twoFingerTap)
+//    }
+//    
+//    @IBAction func didLeftSwipe(_ sender: UISwipeGestureRecognizer) {
+//        print("did swipe left")
+//        self.correctActionGesture(selected: self.currentActionGesture == .leftSwipe)
+//    }
+//    
+//    @IBAction func didRightSwipe(_ sender: AnyObject) {
+//        print("did swipe right")
+//        self.correctActionGesture(selected: self.currentActionGesture == .rightSwipe)
+//    }
 }

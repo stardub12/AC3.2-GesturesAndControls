@@ -120,27 +120,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNT-lY-ys6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer delaysTouchesEnded="NO" id="rfY-bO-Exv" userLabel="Single Tap Gesture Recognizer">
                     <connections>
-                        <action selector="didTapView:" destination="bHa-Ai-fdX" id="gjn-Gn-cOD"/>
+                        <action selector="didPerformGesture:" destination="bHa-Ai-fdX" id="UWB-nS-PeP"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer numberOfTapsRequired="2" id="J9W-XP-9hv" userLabel="Double Tap Gesture Recognizer">
                     <connections>
-                        <action selector="didDoubleTapView:" destination="bHa-Ai-fdX" id="1bY-Rn-DwE"/>
+                        <action selector="didPerformGesture:" destination="bHa-Ai-fdX" id="Nfj-AQ-G8z"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="yqm-Wb-OYl" userLabel="Left Swipe Gesture Recognizer">
                     <connections>
-                        <action selector="didLeftSwipe:" destination="bHa-Ai-fdX" id="blI-Tm-mey"/>
+                        <action selector="didPerformGesture:" destination="bHa-Ai-fdX" id="whn-Hi-frp"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="right" id="JtO-wG-TeD" userLabel="Right Swipe Gesture Recognizer">
                     <connections>
-                        <action selector="didRightSwipe:" destination="bHa-Ai-fdX" id="amu-IJ-rwg"/>
+                        <action selector="didPerformGesture:" destination="bHa-Ai-fdX" id="HgR-YA-cqK"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer numberOfTouchesRequired="2" id="sic-on-fEq" userLabel="Two Finger Tap Gesture Recognizer">
                     <connections>
-                        <action selector="didTwoFingerTapView:" destination="bHa-Ai-fdX" id="xip-D8-EoK"/>
+                        <action selector="didPerformGesture:" destination="bHa-Ai-fdX" id="4gP-B2-WdV"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
