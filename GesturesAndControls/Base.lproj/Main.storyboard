@@ -81,20 +81,57 @@
                     <view key="view" contentMode="scaleToFill" id="Lj2-fk-E9M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTION!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEo-e7-HUt">
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="GEo-e7-HUt" firstAttribute="centerY" secondItem="Lj2-fk-E9M" secondAttribute="centerY" id="PGJ-Wd-nrD"/>
+                            <constraint firstItem="GEo-e7-HUt" firstAttribute="centerX" secondItem="Lj2-fk-E9M" secondAttribute="centerX" id="zWc-Tf-5qj"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rfY-bO-Exv" appends="YES" id="x9p-QM-5Pb"/>
+                            <outletCollection property="gestureRecognizers" destination="yqm-Wb-OYl" appends="YES" id="XhC-Pt-cs6"/>
+                            <outletCollection property="gestureRecognizers" destination="JtO-wG-TeD" appends="YES" id="bjt-jW-LVP"/>
+                            <outletCollection property="gestureRecognizers" destination="J9W-XP-9hv" appends="YES" id="jPG-7w-us8"/>
+                            <outletCollection property="gestureRecognizers" destination="sic-on-fEq" appends="YES" id="a5Y-fU-cwH"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="actionToPerformLabel" destination="GEo-e7-HUt" id="g4U-Dm-rvB"/>
+                        <outlet property="doubleTapGestureRecognizer" destination="J9W-XP-9hv" id="I2x-9a-slH"/>
                         <outlet property="tapGestureRecognizer" destination="rfY-bO-Exv" id="U5P-L0-zyU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNT-lY-ys6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rfY-bO-Exv">
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="rfY-bO-Exv" userLabel="Single Tap Gesture Recognizer">
                     <connections>
                         <action selector="didTapView:" destination="bHa-Ai-fdX" id="gjn-Gn-cOD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="J9W-XP-9hv" userLabel="Double Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didDoubleTapView:" destination="bHa-Ai-fdX" id="1bY-Rn-DwE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="yqm-Wb-OYl" userLabel="Left Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didLeftSwipe:" destination="bHa-Ai-fdX" id="blI-Tm-mey"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="JtO-wG-TeD" userLabel="Right Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="didRightSwipe:" destination="bHa-Ai-fdX" id="amu-IJ-rwg"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTouchesRequired="2" id="sic-on-fEq" userLabel="Two Finger Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTwoFingerTapView:" destination="bHa-Ai-fdX" id="xip-D8-EoK"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
