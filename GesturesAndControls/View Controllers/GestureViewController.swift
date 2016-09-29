@@ -76,17 +76,16 @@ class GestureViewController: UIViewController {
     
     @IBAction func didPerformGesture(_ sender: UIGestureRecognizer) {
         
+        var actionMatchedGesture: Bool = false
         if let tapGesture: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
             
             switch (tapGesture.numberOfTapsRequired, tapGesture.numberOfTouchesRequired, self.currentActionGesture){
             case (1, 1, .tap),
                  (2, 1, .doubleTap),
                  (1, 2, .twoFingerTap):
-                self.correctActionGesture(selected: true)
+                actionMatchedGesture = true
                 
-            default:
-                print("tap type was wrong!")
-                self.correctActionGesture(selected: false)
+            default: print("tap type was wrong!")
             }
         }
         
@@ -95,13 +94,13 @@ class GestureViewController: UIViewController {
             switch (swipeGesture.direction, self.currentActionGesture) {
             case (UISwipeGestureRecognizerDirection.left, .leftSwipe),
                  (UISwipeGestureRecognizerDirection.right, .rightSwipe):
-                self.correctActionGesture(selected: true)
+                actionMatchedGesture = true
                 
-            default:
-                print("was not left/right")
-                self.correctActionGesture(selected: false)
+            default: print("was not left/right")
             }
         }
+        
+        self.correctActionGesture(selected: actionMatchedGesture)
     }
     
 //    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
