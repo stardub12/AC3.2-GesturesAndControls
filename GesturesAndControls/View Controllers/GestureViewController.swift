@@ -51,7 +51,7 @@ class GestureViewController: UIViewController {
     }
     
     func pickRandomActionGesture() -> ActionGesture {
-        let randomInt = Int(arc4random_uniform(4)) // number between 0-4
+        let randomInt = Int(arc4random_uniform(5)) // number between 0-4
         return ActionGesture.init(rawValue: randomInt) ?? .tap
     }
     
@@ -59,6 +59,10 @@ class GestureViewController: UIViewController {
         print("Heck yea I was tapped")
         if self.currentActionGesture == .tap {
             self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.green
+        } else {
+            self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.red
         }
     }
     
@@ -66,6 +70,10 @@ class GestureViewController: UIViewController {
         print("double tap!")
         if self.currentActionGesture == .doubleTap {
             self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.green
+        } else {
+            self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.red
         }
     }
     
@@ -73,6 +81,10 @@ class GestureViewController: UIViewController {
         print("two finger tap!")
         if self.currentActionGesture == .twoFingerTap {
             self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.green
+        } else {
+            self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.red
         }
     }
     
@@ -80,6 +92,10 @@ class GestureViewController: UIViewController {
         print("did swipe left")
         if self.currentActionGesture == .leftSwipe {
             self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.green
+        } else {
+            self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.red
         }
     }
     
@@ -87,6 +103,10 @@ class GestureViewController: UIViewController {
         print("did swipe right")
         if self.currentActionGesture == .rightSwipe {
             self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.green
+        } else {
+            self.currentActionGesture = pickRandomActionGesture()
+            self.view.backgroundColor = UIColor.red
         }
     }
 }
