@@ -19,7 +19,7 @@ class GestureViewController: UIViewController {
     @IBOutlet weak var actionToPerformLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    internal var currentActionGesture: ActionGesture! {
+    internal var currentActionGesture: ActionGesture = .tap {
         willSet {
             self.updateLabel(for: newValue)
         }
@@ -77,16 +77,13 @@ class GestureViewController: UIViewController {
     @IBAction func didPerformGesture(_ sender: UIGestureRecognizer) {
         
         if let tapGesture: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
-            switch (tapGesture.numberOfTapsRequired, tapGesture.numberOfTouchesRequired){
-            case (1, 1):
-                print("Heck yea I was tapped")
-                self.correctActionGesture(selected: self.currentActionGesture == .tap)
-            case (2, 1):
-                print("double tap!")
-                self.correctActionGesture(selected: self.currentActionGesture == .doubleTap)
-            case (1, 2):
-                print("two finger tap!")
-                self.correctActionGesture(selected: self.currentActionGesture == .twoFingerTap)
+            
+            switch (tapGesture.numberOfTapsRequired, tapGesture.numberOfTouchesRequired, self.currentActionGesture){
+            case (1, 1, .tap),
+                 (2, 1, .doubleTap),
+                 (1, 2, .twoFingerTap):
+                self.correctActionGesture(selected: true)
+                
             default:
                 print("tap type was wrong!")
                 self.correctActionGesture(selected: false)
@@ -94,13 +91,12 @@ class GestureViewController: UIViewController {
         }
         
         if let swipeGesture: UISwipeGestureRecognizer = sender as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.left:
-                print("did swipe left")
-                self.correctActionGesture(selected: self.currentActionGesture == .leftSwipe)
-            case UISwipeGestureRecognizerDirection.right:
-                print("did swipe right")
-                self.correctActionGesture(selected: self.currentActionGesture == .rightSwipe)
+            
+            switch (swipeGesture.direction, self.currentActionGesture) {
+            case (UISwipeGestureRecognizerDirection.left, .leftSwipe),
+                 (UISwipeGestureRecognizerDirection.right, .rightSwipe):
+                self.correctActionGesture(selected: true)
+                
             default:
                 print("was not left/right")
                 self.correctActionGesture(selected: false)
