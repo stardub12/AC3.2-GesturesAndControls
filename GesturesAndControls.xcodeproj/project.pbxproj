@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14C0BCE61D9C857000C51C30 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C0BCE51D9C857000C51C30 /* MenuTableViewController.swift */; };
+		14C0BCE81D9CA28D00C51C30 /* GestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C0BCE71D9CA28D00C51C30 /* GestureViewController.swift */; };
 		14FA111D1D9C665A00DBFBD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA111C1D9C665A00DBFBD6 /* AppDelegate.swift */; };
 		14FA111F1D9C665A00DBFBD6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA111E1D9C665A00DBFBD6 /* MasterViewController.swift */; };
 		14FA11211D9C665A00DBFBD6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA11201D9C665A00DBFBD6 /* DetailViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14C0BCE51D9C857000C51C30 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = "View Controllers/MenuTableViewController.swift"; sourceTree = "<group>"; };
+		14C0BCE71D9CA28D00C51C30 /* GestureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GestureViewController.swift; path = "View Controllers/GestureViewController.swift"; sourceTree = "<group>"; };
 		14FA11191D9C665A00DBFBD6 /* GesturesAndControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GesturesAndControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FA111C1D9C665A00DBFBD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14FA111E1D9C665A00DBFBD6 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14C0BCE31D9C849D00C51C30 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14C0BCE51D9C857000C51C30 /* MenuTableViewController.swift */,
+				14C0BCE71D9CA28D00C51C30 /* GestureViewController.swift */,
+				14C0BCE91D9CA29200C51C30 /* Free VC */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		14C0BCE41D9C84A900C51C30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14FA11221D9C665A00DBFBD6 /* Main.storyboard */,
+				14FA11251D9C665A00DBFBD6 /* Assets.xcassets */,
+				14FA11271D9C665A00DBFBD6 /* LaunchScreen.storyboard */,
+				14FA112A1D9C665A00DBFBD6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14C0BCE91D9CA29200C51C30 /* Free VC */ = {
+			isa = PBXGroup;
+			children = (
+				14FA111E1D9C665A00DBFBD6 /* MasterViewController.swift */,
+				14FA11201D9C665A00DBFBD6 /* DetailViewController.swift */,
+			);
+			name = "Free VC";
+			sourceTree = "<group>";
+		};
 		14FA11101D9C665A00DBFBD6 = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +99,9 @@
 				14FA11321D9C665A00DBFBD6 /* GesturesAndControlsTests */,
 				14FA111A1D9C665A00DBFBD6 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		14FA111A1D9C665A00DBFBD6 /* Products */ = {
 			isa = PBXGroup;
@@ -80,12 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				14FA111C1D9C665A00DBFBD6 /* AppDelegate.swift */,
-				14FA111E1D9C665A00DBFBD6 /* MasterViewController.swift */,
-				14FA11201D9C665A00DBFBD6 /* DetailViewController.swift */,
-				14FA11221D9C665A00DBFBD6 /* Main.storyboard */,
-				14FA11251D9C665A00DBFBD6 /* Assets.xcassets */,
-				14FA11271D9C665A00DBFBD6 /* LaunchScreen.storyboard */,
-				14FA112A1D9C665A00DBFBD6 /* Info.plist */,
+				14C0BCE31D9C849D00C51C30 /* View Controllers */,
+				14C0BCE41D9C84A900C51C30 /* Supporting Files */,
 			);
 			path = GesturesAndControls;
 			sourceTree = "<group>";
@@ -203,7 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				14FA11211D9C665A00DBFBD6 /* DetailViewController.swift in Sources */,
+				14C0BCE61D9C857000C51C30 /* MenuTableViewController.swift in Sources */,
 				14FA111F1D9C665A00DBFBD6 /* MasterViewController.swift in Sources */,
+				14C0BCE81D9CA28D00C51C30 /* GestureViewController.swift in Sources */,
 				14FA111D1D9C665A00DBFBD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +444,7 @@
 				14FA113A1D9C665A00DBFBD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14FA113B1D9C665A00DBFBD6 /* Build configuration list for PBXNativeTarget "GesturesAndControlsTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +453,7 @@
 				14FA113D1D9C665A00DBFBD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
