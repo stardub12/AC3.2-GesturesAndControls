@@ -17,6 +17,7 @@ class GestureViewController: UIViewController {
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var doubleTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var actionToPerformLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     internal var currentActionGesture: ActionGesture! {
         willSet {
@@ -31,6 +32,7 @@ class GestureViewController: UIViewController {
         tapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
         
         self.currentActionGesture = self.pickRandomActionGesture()
+        self.scoreLabel.text = "Score: 9"
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,14 +57,34 @@ class GestureViewController: UIViewController {
         return ActionGesture.init(rawValue: randomInt) ?? .tap
     }
     
+    func updateScore(delta: Int) {
+        guard delta > 0 else {
+            self.scoreLabel.text = "Score: 0"
+            return
+        }
+        
+        if let rangeOfDigits: Range<String.Index> = self.scoreLabel.text?.rangeOfCharacter(from: CharacterSet.decimalDigits) {
+            let digitSubstring: String = self.scoreLabel.text!.substring(from: rangeOfDigits.lowerBound)
+            print(digitSubstring)
+            
+            if let score: Int = Int(digitSubstring) {
+                let newScore = score + 1
+                self.scoreLabel.text = "Score: \(newScore)"
+            }
+        }
+    
+    }
+    
     @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
         print("Heck yea I was tapped")
         if self.currentActionGesture == .tap {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.green
+            self.updateScore(delta: 1)
         } else {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.red
+            self.updateScore(delta: -1)
         }
     }
     
@@ -71,9 +93,11 @@ class GestureViewController: UIViewController {
         if self.currentActionGesture == .doubleTap {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.green
+            self.updateScore(delta: 1)
         } else {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.red
+            self.updateScore(delta: -1)
         }
     }
     
@@ -82,9 +106,11 @@ class GestureViewController: UIViewController {
         if self.currentActionGesture == .twoFingerTap {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.green
+            self.updateScore(delta: 1)
         } else {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.red
+            self.updateScore(delta: -1)
         }
     }
     
@@ -93,9 +119,11 @@ class GestureViewController: UIViewController {
         if self.currentActionGesture == .leftSwipe {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.green
+            self.updateScore(delta: 1)
         } else {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.red
+            self.updateScore(delta: -1)
         }
     }
     
@@ -104,9 +132,11 @@ class GestureViewController: UIViewController {
         if self.currentActionGesture == .rightSwipe {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.green
+            self.updateScore(delta: 1)
         } else {
             self.currentActionGesture = pickRandomActionGesture()
             self.view.backgroundColor = UIColor.red
+            self.updateScore(delta: -1)
         }
     }
 }

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -87,11 +88,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr6-Fb-hJM">
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="nr6-Fb-hJM" firstAttribute="top" secondItem="7QZ-tG-BGC" secondAttribute="bottom" constant="8" id="4Hw-KE-Oqv"/>
                             <constraint firstItem="GEo-e7-HUt" firstAttribute="centerY" secondItem="Lj2-fk-E9M" secondAttribute="centerY" id="PGJ-Wd-nrD"/>
+                            <constraint firstItem="nr6-Fb-hJM" firstAttribute="trailing" secondItem="Lj2-fk-E9M" secondAttribute="trailingMargin" constant="8" id="kyu-e0-mNd"/>
                             <constraint firstItem="GEo-e7-HUt" firstAttribute="centerX" secondItem="Lj2-fk-E9M" secondAttribute="centerX" id="zWc-Tf-5qj"/>
                         </constraints>
                         <connections>
@@ -105,6 +113,7 @@
                     <connections>
                         <outlet property="actionToPerformLabel" destination="GEo-e7-HUt" id="g4U-Dm-rvB"/>
                         <outlet property="doubleTapGestureRecognizer" destination="J9W-XP-9hv" id="I2x-9a-slH"/>
+                        <outlet property="scoreLabel" destination="nr6-Fb-hJM" id="Hfw-Kd-JXT"/>
                         <outlet property="tapGestureRecognizer" destination="rfY-bO-Exv" id="U5P-L0-zyU"/>
                     </connections>
                 </viewController>
@@ -135,7 +144,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="713" y="110"/>
+            <point key="canvasLocation" x="712.79999999999995" y="109.29535232383809"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
