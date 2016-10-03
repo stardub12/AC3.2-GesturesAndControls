@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol updateViews {
+    func isCorrect(_ correct: Bool)
+//    func updateLabel(for actionGes: ActionGesture)
+}
+
 class GesturesViewController: UIViewController {
+    
+    
     var correctColorValue = 0.0
     
     enum ActionGesture: Int {
         case tap, doubleTap, twoFingerTap, leftSwipe, rightSwipe
     }
+    
+    
     
     var currentActionGesture = ActionGesture.tap {
         willSet {
@@ -21,7 +30,7 @@ class GesturesViewController: UIViewController {
         }
     }
     
-    var currentScore: Int = 0 {
+    public var currentScore: Int = 0 {
         willSet {
             self.scoreLabel.text = "Score: \(newValue)"
         }
@@ -36,14 +45,18 @@ class GesturesViewController: UIViewController {
     @IBOutlet var doubleTapGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet var twoFingerTapGestureRecognizer: UITapGestureRecognizer!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        self.view.backgroundColor = SettingsViewController()
+        
         tapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
         self.currentActionGesture = self.pickRandomActionGesture()
-
+        
     }
-
+    
     // MARK: - Utility
     // update our label for each gesture
     func updateLabel(for actionGes: ActionGesture) {
@@ -66,30 +79,30 @@ class GesturesViewController: UIViewController {
     }
     
     // MARK: - Actions
-//    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
-//        print("I was tapped")
-//        self.isCorrect(self.currentActionGesture == .tap)
-//    }
-//    
-//    @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
-//        print("Swiped left")
-//        self.isCorrect(self.currentActionGesture == .leftSwipe)
-//    }
-//    
-//    @IBAction func swipedRight(_ sender: UISwipeGestureRecognizer) {
-//        print("Swiped right")
-//        self.isCorrect(self.currentActionGesture == .rightSwipe)
-//    }
-//    
-//    @IBAction func didDoubleTapView(_ sender: UITapGestureRecognizer) {
-//        print("Did double tap view")
-//        self.isCorrect(self.currentActionGesture == .doubleTap)
-//    }
-//    
-//    @IBAction func didTwoFingerTapView(_ sender: UITapGestureRecognizer) {
-//        print("Did two finger tap view")
-//        self.isCorrect(self.currentActionGesture == .twoFingerTap)
-//    }
+    //    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
+    //        print("I was tapped")
+    //        self.isCorrect(self.currentActionGesture == .tap)
+    //    }
+    //
+    //    @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
+    //        print("Swiped left")
+    //        self.isCorrect(self.currentActionGesture == .leftSwipe)
+    //    }
+    //
+    //    @IBAction func swipedRight(_ sender: UISwipeGestureRecognizer) {
+    //        print("Swiped right")
+    //        self.isCorrect(self.currentActionGesture == .rightSwipe)
+    //    }
+    //
+    //    @IBAction func didDoubleTapView(_ sender: UITapGestureRecognizer) {
+    //        print("Did double tap view")
+    //        self.isCorrect(self.currentActionGesture == .doubleTap)
+    //    }
+    //
+    //    @IBAction func didTwoFingerTapView(_ sender: UITapGestureRecognizer) {
+    //        print("Did two finger tap view")
+    //        self.isCorrect(self.currentActionGesture == .twoFingerTap)
+    //    }
     
     @IBAction func didPerformGesture(_ sender: UIGestureRecognizer) {
         if let tapGesture: UITapGestureRecognizer = sender as? UITapGestureRecognizer {
@@ -112,7 +125,7 @@ class GesturesViewController: UIViewController {
                 self.isCorrect(false)
             }
         }
-    
+        
         if let swipeGesture: UISwipeGestureRecognizer = sender as? UISwipeGestureRecognizer {
             
             switch swipeGesture.direction {
@@ -138,15 +151,15 @@ class GesturesViewController: UIViewController {
         if correct {
             // use the "correctColorValue" to manipulate the red component of a color
             self.view.backgroundColor = UIColor(red: CGFloat(self.correctColorValue), green: 1.0, blue: 1.0, alpha: 1.0)
-            
-            // alternatively we can change the hue using this initializer of UIColor
-            // self.view.backgroundColor = UIColor(hue: CGFloat(Float(self.correctColorValue)), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-
+ 
             self.currentScore += 1
+            
         }
         else {
             self.view.backgroundColor = UIColor.red
             self.currentScore = 0
         }
     }
+    
+    
 }
