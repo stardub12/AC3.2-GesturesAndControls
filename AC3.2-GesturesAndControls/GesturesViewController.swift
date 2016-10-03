@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol updateViews {
-    func isCorrect(_ correct: Bool)
-//    func updateLabel(for actionGes: ActionGesture)
-}
 
 class GesturesViewController: UIViewController {
     
@@ -30,7 +26,7 @@ class GesturesViewController: UIViewController {
         }
     }
     
-    public var currentScore: Int = 0 {
+    var currentScore: Int = 0 {
         willSet {
             self.scoreLabel.text = "Score: \(newValue)"
         }

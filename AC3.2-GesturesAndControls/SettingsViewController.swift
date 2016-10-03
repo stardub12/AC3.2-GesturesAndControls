@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol updateViews: class {
+    func isCorrect(_ correct: Bool)
+    
+    
+    //    func updateLabel(for actionGes: ActionGesture)
+}
+
 
 class SettingsViewController: UIViewController {
     
-    
+    weak var delegate: updateViews?
     @IBOutlet weak var colorSliderRed: UISlider!
     @IBOutlet weak var colorSliderGreen: UISlider!
     @IBOutlet weak var colorSliderBlue: UISlider!
@@ -19,6 +26,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var previewFrame: UIView!
     @IBOutlet weak var switchToggle: UISwitch!
     @IBOutlet weak var colorStepper: UIStepper!
+    @IBOutlet weak var rounds: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,19 +45,7 @@ class SettingsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let gvc = segue.destination as? GesturesViewController {
             gvc.correctColorValue = Double(colorSliderRed.value)
-            
-            
-            //
-            //        func choice(_ segment: UISegmentedControl) {
-            //            switch segment.selectedSegmentIndex {
-            //            case 0:
-            //                rightWrongLabel.selectedSegmentIndex = 0
-            //            case 1:
-            //                rightWrongLabel.selectedSegmentIndex = 1
-            //            default:
-            //                rightWrongLabel.selectedSegmentIndex = 0
-            //            }
-            //        }
+
             
         }
     }
@@ -79,8 +75,8 @@ class SettingsViewController: UIViewController {
     
     @IBAction func onOff(_ sender: UISwitch) {
         if switchToggle.isOn == false {
-//            gestures.currentScore = 0
-//            gestures.view.backgroundColor = UIColor.red
+            gestures.currentScore = 0
+            gestures.view.backgroundColor = UIColor.red
             view.backgroundColor = UIColor.white
         } else if switchToggle.isOn == true {
             view.backgroundColor = UIColor.gray
@@ -88,6 +84,18 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func stepperRounds(_ sender: UIStepper) {
+       var currentValue = 1
+        colorStepper.value = Double(currentValue)
+        if Double(currentValue) < colorStepper.value {
+            currentValue += 1
+        }
+        if currentValue >= 5 {
+            gestures.currentScore = 0
+        }
+        
+//        stepperAction.value = Double(currentValue)
+        
+        rounds.text = "ROUNDS: \(Int(currentValue))"
     }
 }
 
